@@ -35,10 +35,16 @@ _load_env()
 @st.cache_resource
 def get_client():
     from supabase import create_client
-    url = os.environ.get('SUPABASE_URL','')
-    key = os.environ.get('SUPABASE_SERVICE_KEY','')
+    # Streamlit Cloud — read from [supabase] secrets section
+    try:
+        url = st.secrets["supabase"]["url"]
+        key = st.secrets["supabase"]["key"]
+    except Exception:
+        # Local — fall back to .env
+        url = os.environ.get('SUPABASE_URL', '').strip().strip('"')
+        key = os.environ.get('SUPABASE_SERVICE_KEY', '').strip().strip('"')
     if not url or not key:
-        st.error("❌ SUPABASE_URL or SUPABASE_SERVICE_KEY not set in .env"); st.stop()
+        st.error("❌ Supabase credentials not found in secrets or .env"); st.stop()
     return create_client(url, key)
 
 S = 'nldc'
