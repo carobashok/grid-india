@@ -1,0 +1,4 @@
+python run_pipeline.py --folder ./pdfs/raw
+
+
+python nldc_vre_loader.py --folder Pdfs/Raw/vre/
