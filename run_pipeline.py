@@ -77,6 +77,16 @@ def process_one(pdf_path, data_date=None, dry_run=False, skip_existing=True):
             load_parsed(parsed, verbose=False)
             mark_processed(d)
             log.info(f"  LOADED {d} ✅")
+            # Prompt to delete the PDF
+            ans = input(f"\nDelete {pdf_path.name}? (Y/N): ").strip().upper()
+            if ans == 'Y':
+                try:
+                    pdf_path.unlink()
+                    log.info(f"  Deleted: {pdf_path.name}")
+                except Exception as e:
+                    log.warning(f"  Could not delete {pdf_path.name}: {e}")
+            else:
+                log.info("  PDF file kept.")
         else:
             log.info(f"  DRY RUN — not loading to Supabase")
 
@@ -107,6 +117,23 @@ def process_folder(folder, dry_run=False, skip_existing=True):
             fail += 1
 
     log.info(f"\nDone: {ok} OK, {fail} failed, {skip} skipped")
+
+    # Prompt to delete loaded PDFs
+    if not dry_run and ok > 0:
+        ans = input("\nDelete loaded PDF files? (Y/N): ").strip().upper()
+        if ans == 'Y':
+            deleted = 0
+            for pdf in pdfs:
+                try:
+                    pdf.unlink()
+                    log.info(f"  Deleted: {pdf.name}")
+                    deleted += 1
+                except Exception as e:
+                    log.warning(f"  Could not delete {pdf.name}: {e}")
+            log.info(f"  {deleted} file(s) deleted.")
+        else:
+            log.info("  PDF files kept.")
+
     return ok, fail
 
 

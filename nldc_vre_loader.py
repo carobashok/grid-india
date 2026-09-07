@@ -231,6 +231,22 @@ def process_folder(
     print(f"Done  |  Success: {success}  Skipped: {skipped}  Failed: {failed}")
     print(f"Processed dates tracked: {len(processed)}")
 
+    # Prompt to delete loaded PDFs
+    if not dry_run and success > 0:
+        ans = input("\nDelete loaded PDF files? (Y/N): ").strip().upper()
+        if ans == 'Y':
+            deleted = 0
+            for pdf in vre_pdfs:
+                try:
+                    pdf.unlink()
+                    print(f"  🗑 Deleted: {pdf.name}")
+                    deleted += 1
+                except Exception as e:
+                    print(f"  ✗ Could not delete {pdf.name}: {e}")
+            print(f"  {deleted} file(s) deleted.")
+        else:
+            print("  PDF files kept.")
+
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
 
@@ -266,10 +282,20 @@ def main():
         process_folder(Path(args.folder), client, args.dry_run, args.force)
 
     elif args.path:
-        ok = process_file(Path(args.path), client, processed, args.dry_run, args.force,
+        pdf_path = Path(args.path)
+        ok = process_file(pdf_path, client, processed, args.dry_run, args.force,
                           override_date=args.override_date)
         if ok and not args.dry_run:
             save_processed(processed)
+            ans = input(f"\nDelete {pdf_path.name}? (Y/N): ").strip().upper()
+            if ans == 'Y':
+                try:
+                    pdf_path.unlink()
+                    print(f"  🗑 Deleted: {pdf_path.name}")
+                except Exception as e:
+                    print(f"  ✗ Could not delete: {e}")
+            else:
+                print("  PDF file kept.")
 
     else:
         parser.print_help()

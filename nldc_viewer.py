@@ -200,8 +200,7 @@ if page == "📈 Trend Dashboard":
     fig.update_layout(**lyt)
     st.plotly_chart(fig, use_container_width=True)
 
-    st.subheader("Daily Generation Mix (MU)")
-    f3 = go.Figure()
+    # ── Generation mix constants (shared by both charts) ────────
     gen_mix = [
         ('coal_mu',    '#78350f', 'Coal'),
         ('lignite_mu', '#92400e', 'Lignite'),
@@ -211,26 +210,47 @@ if page == "📈 Trend Dashboard":
         ('wind_mu',    '#5BA4CF', 'Wind'),
         ('solar_mu',   '#F5A623', 'Solar'),
     ]
+    mix_cols = [c for c, _, _ in gen_mix if c in df.columns]
+
+    # ── MU chart ──────────────────────────────────────────────
+    st.subheader("Daily Generation Mix (MU)")
+    mu_mode = st.radio("View", ["Stacked", "Unstacked"],
+                        horizontal=True, key='mu_mode')
+    f3 = go.Figure()
     for col, color, label in gen_mix:
         if col in df.columns:
             f3.add_trace(go.Scatter(
                 x=df['report_date'], y=df[col],
                 mode='lines', name=label,
-                line=dict(color=color, width=0.5),
-                stackgroup='one',
+                line=dict(color=color, width=1.5 if mu_mode=='Unstacked' else 0.5),
+                stackgroup='one' if mu_mode=='Stacked' else None,
                 hovertemplate=f'{label}: %{{y:,.0f}} MU<br>%{{x|%d %b}}<extra></extra>'))
     lf3 = dl(300); lf3['yaxis']['title'] = 'MU'; lf3['legend']['orientation'] = 'h'
     f3.update_layout(**lf3); st.plotly_chart(f3, use_container_width=True)
 
-    st.subheader("Frequency Discipline — % Time in IEGC Band (49.9–50.05 Hz)")
-    if 'freq_band_pct' in df.columns:
-        f4 = go.Figure(go.Bar(x=df['report_date'], y=df['freq_band_pct'],
-            marker_color=df['freq_band_pct'].apply(
-                lambda x: '#22c55e' if x>=80 else '#f59e0b' if x>=70 else '#ef4444'),
-            hovertemplate='%{x|%d %b}<br>%{y:.1f}%<extra></extra>'))
-        f4.add_hline(y=80,line_dash='dash',line_color='#22c55e',annotation_text='80% target')
-        lyt4 = dl(220); lyt4['yaxis']['range']=[50,100]; lyt4['yaxis']['title']='% in band'; lyt4['showlegend']=False
-        f4.update_layout(**lyt4); st.plotly_chart(f4, use_container_width=True)
+    # ── % Share chart ─────────────────────────────────────────
+    st.subheader("Daily Generation Mix — % Share")
+    pct_mode = st.radio("View", ["Stacked", "Unstacked"],
+                         horizontal=True, key='pct_mode')
+    df_mix = df[['report_date'] + mix_cols].copy()
+    df_mix['total'] = df_mix[mix_cols].sum(axis=1)
+    for col in mix_cols:
+        df_mix[col + '_pct'] = (df_mix[col] / df_mix['total'] * 100).round(2)
+
+    f4 = go.Figure()
+    for col, color, label in gen_mix:
+        if col in df.columns:
+            f4.add_trace(go.Scatter(
+                x=df_mix['report_date'], y=df_mix[col + '_pct'],
+                mode='lines', name=label,
+                line=dict(color=color, width=1.5 if pct_mode=='Unstacked' else 0.5),
+                stackgroup='one' if pct_mode=='Stacked' else None,
+                hovertemplate=f'{label}: %{{y:.1f}}%<br>%{{x|%d %b}}<extra></extra>'))
+    lf4 = dl(300); lf4['yaxis']['title'] = '% Share'; lf4['legend']['orientation'] = 'h'
+    if pct_mode == 'Stacked':
+        lf4['yaxis']['range'] = [0, 100]
+    f4.update_layout(**lf4); st.plotly_chart(f4, use_container_width=True)
+
 
     with st.expander("📋 Raw data table"):
         cols = [c for c in ['report_date','max_demand_mw','all_energy_mu','solar_mu',
