@@ -77,16 +77,6 @@ def process_one(pdf_path, data_date=None, dry_run=False, skip_existing=True):
             load_parsed(parsed, verbose=False)
             mark_processed(d)
             log.info(f"  LOADED {d} ✅")
-            # Prompt to delete the PDF
-            ans = input(f"\nDelete {pdf_path.name}? (Y/N): ").strip().upper()
-            if ans == 'Y':
-                try:
-                    pdf_path.unlink()
-                    log.info(f"  Deleted: {pdf_path.name}")
-                except Exception as e:
-                    log.warning(f"  Could not delete {pdf_path.name}: {e}")
-            else:
-                log.info("  PDF file kept.")
         else:
             log.info(f"  DRY RUN — not loading to Supabase")
 
@@ -118,7 +108,7 @@ def process_folder(folder, dry_run=False, skip_existing=True):
 
     log.info(f"\nDone: {ok} OK, {fail} failed, {skip} skipped")
 
-    # Prompt to delete loaded PDFs
+    # Prompt once to delete all loaded PDFs
     if not dry_run and ok > 0:
         ans = input("\nDelete loaded PDF files? (Y/N): ").strip().upper()
         if ans == 'Y':
@@ -182,8 +172,18 @@ def main():
 
     elif args.file:
         data_date = date.fromisoformat(args.date) if args.date else None
-        process_one(args.file, data_date=data_date,
+        ok = process_one(args.file, data_date=data_date,
                     dry_run=args.dry_run, skip_existing=skip_existing)
+        if ok and not args.dry_run:
+            ans = input(f"\nDelete {Path(args.file).name}? (Y/N): ").strip().upper()
+            if ans == 'Y':
+                try:
+                    Path(args.file).unlink()
+                    log.info(f"  Deleted: {Path(args.file).name}")
+                except Exception as e:
+                    log.warning(f"  Could not delete: {e}")
+            else:
+                log.info("  PDF file kept.")
 
     elif args.daily:
         process_daily(args.pdf_folder, dry_run=args.dry_run)

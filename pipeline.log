@@ -1066,3 +1066,68 @@ Done: 6 OK, 0 failed, 0 skipped
 2026-09-07 11:15:06,384 INFO   Deleted: 05.09.26_NLDC_PSP_394.pdf
 2026-09-07 11:15:06,401 INFO   Deleted: 06.09.26_NLDC_PSP_973.pdf
 2026-09-07 11:15:06,401 INFO   6 file(s) deleted.
+2026-09-13 10:35:43,375 INFO Found 12 PDFs in pdfs\raw
+2026-09-13 10:35:45,182 INFO   SKIP 2026-09-01 (already processed)
+2026-09-13 10:35:46,972 INFO   SKIP 2026-09-02 (already processed)
+2026-09-13 10:35:48,838 INFO   SKIP 2026-09-03 (already processed)
+2026-09-13 10:35:50,760 INFO   SKIP 2026-09-04 (already processed)
+2026-09-13 10:35:52,584 INFO   SKIP 2026-09-05 (already processed)
+2026-09-13 10:35:54,387 INFO   SKIP 2026-09-06 (already processed)
+2026-09-13 10:35:56,147 INFO   PARSED 2026-09-07: 96 SCADA rows, 40 states, 66 summary fields
+2026-09-13 10:35:58,658 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/daily_summary?on_conflict=report_date "HTTP/2 201 Created"
+2026-09-13 10:35:59,568 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/scada_15min?on_conflict=report_date%2Ctime_block&columns=%22storage_discharge_mw%22%2C%22others_mw%22%2C%22report_date%22%2C%22net_demand_mw%22%2C%22hydro_mw%22%2C%22frequency_hz%22%2C%22wind_mw%22%2C%22transnational_mw%22%2C%22total_gen_mw%22%2C%22time_block%22%2C%22storage_demand_mw%22%2C%22gas_mw%22%2C%22thermal_mw%22%2C%22demand_mw%22%2C%22solar_mw%22%2C%22nuclear_mw%22 "HTTP/2 201 Created"
+2026-09-13 10:36:00,261 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/scada_15min?on_conflict=report_date%2Ctime_block&columns=%22storage_discharge_mw%22%2C%22others_mw%22%2C%22report_date%22%2C%22net_demand_mw%22%2C%22hydro_mw%22%2C%22frequency_hz%22%2C%22wind_mw%22%2C%22transnational_mw%22%2C%22total_gen_mw%22%2C%22time_block%22%2C%22storage_demand_mw%22%2C%22gas_mw%22%2C%22thermal_mw%22%2C%22demand_mw%22%2C%22solar_mw%22%2C%22nuclear_mw%22 "HTTP/2 201 Created"
+2026-09-13 10:36:01,109 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/state_daily?on_conflict=report_date%2Cstate&columns=%22energy_shortage_mu%22%2C%22report_date%22%2C%22state%22%2C%22od_ud_mu%22%2C%22max_ud_mw%22%2C%22max_od_mw%22%2C%22peak_demand_mw%22%2C%22shortage_peak_mw%22%2C%22drawal_schedule_mu%22%2C%22energy_met_mu%22%2C%22region%22 "HTTP/2 201 Created"
+2026-09-13 10:36:06,601 INFO   Deleted: 07.09.26_NLDC_PSP_488.pdf
+2026-09-13 10:36:08,368 INFO   PARSED 2026-09-08: 96 SCADA rows, 40 states, 66 summary fields
+2026-09-13 10:36:09,371 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/daily_summary?on_conflict=report_date "HTTP/2 201 Created"
+2026-09-13 10:36:10,060 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/scada_15min?on_conflict=report_date%2Ctime_block&columns=%22storage_discharge_mw%22%2C%22others_mw%22%2C%22report_date%22%2C%22net_demand_mw%22%2C%22hydro_mw%22%2C%22frequency_hz%22%2C%22wind_mw%22%2C%22transnational_mw%22%2C%22total_gen_mw%22%2C%22time_block%22%2C%22storage_demand_mw%22%2C%22gas_mw%22%2C%22thermal_mw%22%2C%22demand_mw%22%2C%22solar_mw%22%2C%22nuclear_mw%22 "HTTP/2 201 Created"
+2026-09-13 10:36:10,746 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/scada_15min?on_conflict=report_date%2Ctime_block&columns=%22storage_discharge_mw%22%2C%22others_mw%22%2C%22report_date%22%2C%22net_demand_mw%22%2C%22hydro_mw%22%2C%22frequency_hz%22%2C%22wind_mw%22%2C%22transnational_mw%22%2C%22total_gen_mw%22%2C%22time_block%22%2C%22storage_demand_mw%22%2C%22gas_mw%22%2C%22thermal_mw%22%2C%22demand_mw%22%2C%22solar_mw%22%2C%22nuclear_mw%22 "HTTP/2 201 Created"
+2026-09-13 10:36:11,347 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/state_daily?on_conflict=report_date%2Cstate&columns=%22energy_shortage_mu%22%2C%22report_date%22%2C%22state%22%2C%22od_ud_mu%22%2C%22max_ud_mw%22%2C%22max_od_mw%22%2C%22peak_demand_mw%22%2C%22shortage_peak_mw%22%2C%22drawal_schedule_mu%22%2C%22energy_met_mu%22%2C%22region%22 "HTTP/2 201 Created"
+2026-09-13 10:36:12,864 INFO   Deleted: 08.09.26_NLDC_PSP_854.pdf
+2026-09-13 10:36:14,672 INFO   PARSED 2026-09-09: 96 SCADA rows, 40 states, 66 summary fields
+2026-09-13 10:36:15,735 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/daily_summary?on_conflict=report_date "HTTP/2 201 Created"
+2026-09-13 10:36:17,493 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/scada_15min?on_conflict=report_date%2Ctime_block&columns=%22storage_discharge_mw%22%2C%22others_mw%22%2C%22report_date%22%2C%22net_demand_mw%22%2C%22hydro_mw%22%2C%22frequency_hz%22%2C%22wind_mw%22%2C%22transnational_mw%22%2C%22total_gen_mw%22%2C%22time_block%22%2C%22storage_demand_mw%22%2C%22gas_mw%22%2C%22thermal_mw%22%2C%22demand_mw%22%2C%22solar_mw%22%2C%22nuclear_mw%22 "HTTP/2 201 Created"
+2026-09-13 10:36:18,166 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/scada_15min?on_conflict=report_date%2Ctime_block&columns=%22storage_discharge_mw%22%2C%22others_mw%22%2C%22report_date%22%2C%22net_demand_mw%22%2C%22hydro_mw%22%2C%22frequency_hz%22%2C%22wind_mw%22%2C%22transnational_mw%22%2C%22total_gen_mw%22%2C%22time_block%22%2C%22storage_demand_mw%22%2C%22gas_mw%22%2C%22thermal_mw%22%2C%22demand_mw%22%2C%22solar_mw%22%2C%22nuclear_mw%22 "HTTP/2 201 Created"
+2026-09-13 10:36:18,722 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/state_daily?on_conflict=report_date%2Cstate&columns=%22energy_shortage_mu%22%2C%22report_date%22%2C%22state%22%2C%22od_ud_mu%22%2C%22max_ud_mw%22%2C%22max_od_mw%22%2C%22peak_demand_mw%22%2C%22shortage_peak_mw%22%2C%22drawal_schedule_mu%22%2C%22energy_met_mu%22%2C%22region%22 "HTTP/2 201 Created"
+2026-09-13 10:36:20,139 INFO   Deleted: 09.09.26_NLDC_PSP_853.pdf
+2026-09-13 10:36:21,952 INFO   PARSED 2026-09-10: 96 SCADA rows, 40 states, 66 summary fields
+2026-09-13 10:36:22,968 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/daily_summary?on_conflict=report_date "HTTP/2 201 Created"
+2026-09-13 10:36:23,660 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/scada_15min?on_conflict=report_date%2Ctime_block&columns=%22storage_discharge_mw%22%2C%22others_mw%22%2C%22report_date%22%2C%22net_demand_mw%22%2C%22hydro_mw%22%2C%22frequency_hz%22%2C%22wind_mw%22%2C%22transnational_mw%22%2C%22total_gen_mw%22%2C%22time_block%22%2C%22storage_demand_mw%22%2C%22gas_mw%22%2C%22thermal_mw%22%2C%22demand_mw%22%2C%22solar_mw%22%2C%22nuclear_mw%22 "HTTP/2 201 Created"
+2026-09-13 10:36:24,401 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/scada_15min?on_conflict=report_date%2Ctime_block&columns=%22storage_discharge_mw%22%2C%22others_mw%22%2C%22report_date%22%2C%22net_demand_mw%22%2C%22hydro_mw%22%2C%22frequency_hz%22%2C%22wind_mw%22%2C%22transnational_mw%22%2C%22total_gen_mw%22%2C%22time_block%22%2C%22storage_demand_mw%22%2C%22gas_mw%22%2C%22thermal_mw%22%2C%22demand_mw%22%2C%22solar_mw%22%2C%22nuclear_mw%22 "HTTP/2 201 Created"
+2026-09-13 10:36:24,979 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/state_daily?on_conflict=report_date%2Cstate&columns=%22energy_shortage_mu%22%2C%22report_date%22%2C%22state%22%2C%22od_ud_mu%22%2C%22max_ud_mw%22%2C%22max_od_mw%22%2C%22peak_demand_mw%22%2C%22shortage_peak_mw%22%2C%22drawal_schedule_mu%22%2C%22energy_met_mu%22%2C%22region%22 "HTTP/2 201 Created"
+2026-09-13 10:36:26,439 INFO   Deleted: 10.09.26_NLDC_PSP_425.pdf
+2026-09-13 10:36:28,224 INFO   PARSED 2026-09-11: 96 SCADA rows, 40 states, 66 summary fields
+2026-09-13 10:36:29,403 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/daily_summary?on_conflict=report_date "HTTP/2 201 Created"
+2026-09-13 10:36:30,127 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/scada_15min?on_conflict=report_date%2Ctime_block&columns=%22storage_discharge_mw%22%2C%22others_mw%22%2C%22report_date%22%2C%22net_demand_mw%22%2C%22hydro_mw%22%2C%22frequency_hz%22%2C%22wind_mw%22%2C%22transnational_mw%22%2C%22total_gen_mw%22%2C%22time_block%22%2C%22storage_demand_mw%22%2C%22gas_mw%22%2C%22thermal_mw%22%2C%22demand_mw%22%2C%22solar_mw%22%2C%22nuclear_mw%22 "HTTP/2 201 Created"
+2026-09-13 10:36:30,774 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/scada_15min?on_conflict=report_date%2Ctime_block&columns=%22storage_discharge_mw%22%2C%22others_mw%22%2C%22report_date%22%2C%22net_demand_mw%22%2C%22hydro_mw%22%2C%22frequency_hz%22%2C%22wind_mw%22%2C%22transnational_mw%22%2C%22total_gen_mw%22%2C%22time_block%22%2C%22storage_demand_mw%22%2C%22gas_mw%22%2C%22thermal_mw%22%2C%22demand_mw%22%2C%22solar_mw%22%2C%22nuclear_mw%22 "HTTP/2 201 Created"
+2026-09-13 10:36:31,355 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/state_daily?on_conflict=report_date%2Cstate&columns=%22energy_shortage_mu%22%2C%22report_date%22%2C%22state%22%2C%22od_ud_mu%22%2C%22max_ud_mw%22%2C%22max_od_mw%22%2C%22peak_demand_mw%22%2C%22shortage_peak_mw%22%2C%22drawal_schedule_mu%22%2C%22energy_met_mu%22%2C%22region%22 "HTTP/2 201 Created"
+2026-09-13 10:36:33,261 INFO   Deleted: 11.09.26_NLDC_PSP_815.pdf
+2026-09-13 10:36:35,075 INFO   PARSED 2026-09-12: 96 SCADA rows, 40 states, 66 summary fields
+2026-09-13 10:36:36,126 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/daily_summary?on_conflict=report_date "HTTP/2 201 Created"
+2026-09-13 10:36:36,779 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/scada_15min?on_conflict=report_date%2Ctime_block&columns=%22storage_discharge_mw%22%2C%22others_mw%22%2C%22report_date%22%2C%22net_demand_mw%22%2C%22hydro_mw%22%2C%22frequency_hz%22%2C%22wind_mw%22%2C%22transnational_mw%22%2C%22total_gen_mw%22%2C%22time_block%22%2C%22storage_demand_mw%22%2C%22gas_mw%22%2C%22thermal_mw%22%2C%22demand_mw%22%2C%22solar_mw%22%2C%22nuclear_mw%22 "HTTP/2 201 Created"
+2026-09-13 10:36:38,442 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/scada_15min?on_conflict=report_date%2Ctime_block&columns=%22storage_discharge_mw%22%2C%22others_mw%22%2C%22report_date%22%2C%22net_demand_mw%22%2C%22hydro_mw%22%2C%22frequency_hz%22%2C%22wind_mw%22%2C%22transnational_mw%22%2C%22total_gen_mw%22%2C%22time_block%22%2C%22storage_demand_mw%22%2C%22gas_mw%22%2C%22thermal_mw%22%2C%22demand_mw%22%2C%22solar_mw%22%2C%22nuclear_mw%22 "HTTP/2 201 Created"
+2026-09-13 10:36:39,104 INFO HTTP Request: POST https://iiutxlcayvswjhqgxibd.supabase.co/rest/v1/state_daily?on_conflict=report_date%2Cstate&columns=%22energy_shortage_mu%22%2C%22report_date%22%2C%22state%22%2C%22od_ud_mu%22%2C%22max_ud_mw%22%2C%22max_od_mw%22%2C%22peak_demand_mw%22%2C%22shortage_peak_mw%22%2C%22drawal_schedule_mu%22%2C%22energy_met_mu%22%2C%22region%22 "HTTP/2 201 Created"
+2026-09-13 10:36:40,501 INFO   Deleted: 12.09.26_NLDC_PSP_443.pdf
+2026-09-13 10:36:40,517 INFO 
+Done: 12 OK, 0 failed, 0 skipped
+2026-09-13 10:36:45,792 INFO   Deleted: 01.09.26_NLDC_PSP_332.pdf
+2026-09-13 10:36:45,794 INFO   Deleted: 02.09.26_NLDC_PSP_371.pdf
+2026-09-13 10:36:45,794 INFO   Deleted: 03.09.26_NLDC_PSP_424.pdf
+2026-09-13 10:36:45,797 INFO   Deleted: 04.09.26_NLDC_PSP_429.pdf
+2026-09-13 10:36:45,797 INFO   Deleted: 05.09.26_NLDC_PSP_394.pdf
+2026-09-13 10:36:45,797 INFO   Deleted: 06.09.26_NLDC_PSP_973.pdf
+2026-09-13 10:36:45,797 WARNING   Could not delete 07.09.26_NLDC_PSP_488.pdf: [WinError 2] The system cannot find the file specified: 'pdfs\\raw\\07.09.26_NLDC_PSP_488.pdf'
+2026-09-13 10:36:45,797 WARNING   Could not delete 08.09.26_NLDC_PSP_854.pdf: [WinError 2] The system cannot find the file specified: 'pdfs\\raw\\08.09.26_NLDC_PSP_854.pdf'
+2026-09-13 10:36:45,797 WARNING   Could not delete 09.09.26_NLDC_PSP_853.pdf: [WinError 2] The system cannot find the file specified: 'pdfs\\raw\\09.09.26_NLDC_PSP_853.pdf'
+2026-09-13 10:36:45,797 WARNING   Could not delete 10.09.26_NLDC_PSP_425.pdf: [WinError 2] The system cannot find the file specified: 'pdfs\\raw\\10.09.26_NLDC_PSP_425.pdf'
+2026-09-13 10:36:45,797 WARNING   Could not delete 11.09.26_NLDC_PSP_815.pdf: [WinError 2] The system cannot find the file specified: 'pdfs\\raw\\11.09.26_NLDC_PSP_815.pdf'
+2026-09-13 10:36:45,797 WARNING   Could not delete 12.09.26_NLDC_PSP_443.pdf: [WinError 2] The system cannot find the file specified: 'pdfs\\raw\\12.09.26_NLDC_PSP_443.pdf'
+2026-09-13 10:36:45,797 INFO   6 file(s) deleted.
+2026-09-13 18:38:29,125 INFO Found 3 PDFs in pdfs\raw
+2026-09-13 18:38:31,807 INFO   SKIP 2026-09-10 (already processed)
+2026-09-13 18:38:34,432 INFO   SKIP 2026-09-11 (already processed)
+2026-09-13 18:38:36,868 INFO   SKIP 2026-09-12 (already processed)
+2026-09-13 18:38:36,868 INFO 
+Done: 3 OK, 0 failed, 0 skipped
+2026-09-13 18:38:53,851 INFO   PDF files kept.
